@@ -1,42 +1,64 @@
-plugins {
-    id 'java-library'
-    id 'maven'
+buildscript {
+    repositories {
+    }
+    dependencies {
+
+    }
 }
 
-//group 'org.testing'
-group = 'com.github.vabrant'
-version '1.0-SNAPSHOT'
+allprojects {
+    apply plugin: "eclipse"
+    apply plugin: "idea"
 
-repositories {
-    mavenCentral()
+    group = "com.github.VabrantGames"
+    version = '1.0-SNAPSHOT'
+
+    repositories {
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
+        maven { url "https://oss.sonatype.org/content/repositories/releases/" }
+        maven { url "https://jitpack.io" }
+    }
 }
 
-dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.7.0'
-    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.7.0'
-}
+subprojects {
+    apply plugin: "java-library"
+    apply plugin: "maven"
 
-test {
-    useJUnitPlatform()
-}
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 
-task sourceJar(type: Jar){
-    from sourceSets.main.allSource
-    archiveClassifier = 'sources'
-}
+    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-task javadocJar(type: Jar, dependsOn: javadoc){
-    from javadoc.destinationDir
-    archiveClassifier = 'javadoc'
-}
+    compileJava {
+        options.incremental = true
+    }
 
-artifacts {
-    archives sourceJar
-    archives javadocJar
-}
+    task sourceJar(type: Jar){
+        from sourceSets.main.allSource
+        archiveClassifier = 'sources'
+    }
 
-install {
-    repositories.mavenInstaller {
+    task javadocJar(type: Jar, dependsOn: javadoc){
+        from javadoc.destinationDir
+        archiveClassifier = 'javadoc'
+    }
 
+    artifacts {
+        archives sourceJar
+        archives javadocJar
+    }
+
+    install {
+        repositories.mavenInstaller {
+
+        }
+    }
+
+    tasks.eclipse.doLast {
+        delete ".project"
+        delete ".classpath"
+        delate ".settings/"
     }
 }

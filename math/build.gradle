@@ -1,0 +1,4 @@
+dependencies {
+    api "com.badlogicgames.gdx:gdx:1.9.10"
+    testImplementation "space.earlygrey:shapedrawer:2.1.0"
+}

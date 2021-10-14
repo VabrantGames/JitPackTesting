@@ -1,2 +1,3 @@
+include "math"
 rootProject.name = 'JitPackTesting'
 
