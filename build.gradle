@@ -55,10 +55,10 @@ subprojects {
 
         }
     }
+}
 
-    tasks.eclipse.doLast {
-        delete ".project"
-        delete ".classpath"
-        delate ".settings/"
-    }
+tasks.eclipse.doLast {
+    delete ".project"
+    delete ".classpath"
+    delate ".settings/"
 }

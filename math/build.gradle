@@ -1,4 +1,11 @@
+ext {
+    gdxVersion = '1.9.10'
+}
+
 dependencies {
     api "com.badlogicgames.gdx:gdx:1.9.10"
     testImplementation "space.earlygrey:shapedrawer:2.1.0"
+    testImplementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
+    testImplementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    testImplementation "junit:junit:4.13"
 }
