@@ -1,16 +1,46 @@
 apply plugin: 'java-library'
 apply plugin: 'maven-publish'
+//apply plugin: "com.vanniktech.maven.publish"
 
-ext {
-    gdxVersion = '1.9.10'
-}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+//compileJava.options.fork = true
+//compileJava.options.forkOptions.executable = 'C:/Program Files/AdoptOpenJDK/jdk-8.0.282.8-hotspot'
 
 dependencies {
     api "com.badlogicgames.gdx:gdx:1.9.10"
     testImplementation "space.earlygrey:shapedrawer:2.1.0"
-    testImplementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
-    testImplementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
+    testImplementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:1.9.10"
+    testImplementation "com.badlogicgames.gdx:gdx-platform:1.9.10:natives-desktop"
     testImplementation "junit:junit:4.13"
+}
+
+
+jar {
+    archiveBaseName.set(name)
+    manifest {
+        attributes 'Implementation-Title': name, 'Implementation-Version': archiveVersion
+    }
+}
+
+if (JavaVersion.current().isJava8Compatible()) {
+    allprojects {
+        tasks.withType(Javadoc) {
+            // The -quiet is because of some sort of weird JDK JavaCompiler bug:
+            // https://discuss.gradle.org/t/passing-arguments-to-compiler-and-javadoc/1661
+            options.addStringOption('Xdoclint:none,-missing', '-quiet')
+        }
+    }
+}
+
+if(JavaVersion.current().isJava9Compatible()) {
+    allprojects {
+        tasks.withType(JavaCompile) {
+            options.release.set(8) // LWJGL3 needs Java 8 starting in libGDX 1.11.0, which forces tests to use Java 8 or higher.
+        }
+    }
 }
 
 afterEvaluate {
