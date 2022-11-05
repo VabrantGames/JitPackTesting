@@ -10,8 +10,9 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-    group = "com.github.VabrantGames"
-    version = '1.0-SNAPSHOT'
+//    group = "com.github.VabrantGames"
+    group = "com.vabrantgames"
+    version = '1.1-SNAPSHOT'
 
     repositories {
         mavenLocal()
@@ -22,43 +23,43 @@ allprojects {
     }
 }
 
-subprojects {
-    apply plugin: "java-library"
-    apply plugin: "maven"
-
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
-
-    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
-
-    compileJava {
-        options.incremental = true
-    }
-
-    task sourceJar(type: Jar){
-        from sourceSets.main.allSource
-        archiveClassifier = 'sources'
-    }
-
-    task javadocJar(type: Jar, dependsOn: javadoc){
-        from javadoc.destinationDir
-        archiveClassifier = 'javadoc'
-    }
-
-    artifacts {
-        archives sourceJar
-        archives javadocJar
-    }
-
-    install {
-        repositories.mavenInstaller {
-
-        }
-    }
-}
+//subprojects {
+//    apply plugin: "java-library"
+//    apply plugin: "maven"
+//
+//    sourceCompatibility = 1.8
+//    targetCompatibility = 1.8
+//
+//    [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
+//
+//    compileJava {
+//        options.incremental = true
+//    }
+//
+//    task sourceJar(type: Jar){
+//        from sourceSets.main.allSource
+//        archiveClassifier = 'sources'
+//    }
+//
+//    task javadocJar(type: Jar, dependsOn: javadoc){
+//        from javadoc.destinationDir
+//        archiveClassifier = 'javadoc'
+//    }
+//
+//    artifacts {
+//        archives sourceJar
+//        archives javadocJar
+//    }
+//
+//    install {
+//        repositories.mavenInstaller {
+//
+//        }
+//    }
+//}
 
 tasks.eclipse.doLast {
     delete ".project"
     delete ".classpath"
-    delate ".settings/"
+    delete ".settings/"
 }

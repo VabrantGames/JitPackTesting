@@ -1,3 +1,6 @@
+apply plugin: 'java-library'
+apply plugin: 'maven-publish'
+
 ext {
     gdxVersion = '1.9.10'
 }
@@ -8,4 +11,22 @@ dependencies {
     testImplementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
     testImplementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
     testImplementation "junit:junit:4.13"
+}
+
+afterEvaluate {
+    java {
+        withSourcesJar()
+        withJavadocJar()
+    }
+
+    publishing {
+        publications {
+            maven(MavenPublication) {
+                groupId this.group
+                artifactId this.name
+                version this.version
+                from components.java
+            }
+        }
+    }
 }
