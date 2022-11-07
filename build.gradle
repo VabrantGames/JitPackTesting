@@ -16,7 +16,7 @@ allprojects {
 
 //    group = "com.github.VabrantGames"
     group = "com.vabrantgames"
-    version = '1.7'
+    version = '1.9'
 
 //    sourceCompatibility = 1.8
 //    targetCompatibility = 1.8
