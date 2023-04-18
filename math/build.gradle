@@ -1,16 +1,12 @@
 apply plugin: 'java-library'
 apply plugin: 'maven-publish'
-//apply plugin: "com.vanniktech.maven.publish"
 
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
 
-//compileJava.options.fork = true
-//compileJava.options.forkOptions.executable = 'C:/Program Files/AdoptOpenJDK/jdk-8.0.282.8-hotspot'
-
 dependencies {
-    api "com.badlogicgames.gdx:gdx:1.9.10"
+    api 'com.badlogicgames.gdx:gdx:1.11.0'
     testImplementation "space.earlygrey:shapedrawer:2.1.0"
     testImplementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:1.9.10"
     testImplementation "com.badlogicgames.gdx:gdx-platform:1.9.10:natives-desktop"
