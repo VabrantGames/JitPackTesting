@@ -14,15 +14,15 @@ allprojects {
     apply plugin: "eclipse"
     apply plugin: "idea"
 
-//    group = "com.github.VabrantGames"
-    group = "com.vabrantgames"
-    version = '1.9'
+    group = "com.github.VabrantGames"
+//    group = "com.vabrantgames"
+    version = '2.0'
 
 //    sourceCompatibility = 1.8
 //    targetCompatibility = 1.8
 
     repositories {
-        mavenLocal()
+//        mavenLocal()
         mavenCentral()
         maven { url "https://oss.sonatype.org/content/repositories/snapshots/" }
         maven { url "https://oss.sonatype.org/content/repositories/releases/" }

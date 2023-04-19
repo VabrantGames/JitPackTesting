@@ -1,4 +1,9 @@
 rootProject.name = 'JitPackTesting'
-include "math"
+include ":math"
+include ":art"
 includeBuild "bob"
+
+if (!System.env.JITPACK) {
+    include 'get'
+}
 
