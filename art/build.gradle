@@ -13,7 +13,6 @@ afterEvaluate {
         publications {
             maven(MavenPublication) {
                 groupId project.group
-                artifact(sourcesJar)
                 artifactId project.name
                 version project.version
                 from components.java

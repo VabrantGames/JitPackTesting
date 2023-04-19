@@ -4,6 +4,6 @@ dependencies {
     api 'com.badlogicgames.gdx:gdx:1.11.0'
 //    implementation 'com.vabrantgames:jitpacktesting:1.9'
 //    implementation 'com.vabrantgames.jitpacktesting:math:1.9'
-//    implementation 'com.github.vabrantgames:jitpacktesting:1.9'
+//    implementation 'com.github.VabrantGames:jitpacktesting:master-SNAPSHOT'
 //    compile 'com.github.VabrantGames.jitpacktesting:math:master-SNAPSHOT'
 }
