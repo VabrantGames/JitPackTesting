@@ -5,5 +5,5 @@ dependencies {
 //    implementation 'com.vabrantgames:jitpacktesting:1.9'
 //    implementation 'com.vabrantgames.jitpacktesting:math:1.9'
 //    implementation 'com.github.vabrantgames:jitpacktesting:1.9'
-//    compile 'com.github.vabrantgames.jitpacktesting:math:latest_integration'
+//    compile 'com.github.VabrantGames.jitpacktesting:math:master-SNAPSHOT'
 }
